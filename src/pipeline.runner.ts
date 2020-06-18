@@ -75,11 +75,12 @@ export class PipelineRunner {
 
         // If definition is linked to existing github repo, pass github source branch and source version to build
         if (p.equals(repositoryId, this.repository) && p.equals(repositoryType, this.githubRepo)) {
-            core.debug("pipeline is linked to same Github repo");
+            core.info("pipeline is linked to same Github repo");
             sourceBranch = this.branch,
                 sourceVersion = this.commitId
         } else {
-            core.debug("pipeline is not linked to same Github repo");
+            sourceBranch = this.taskParameters.azureSourceBranch
+            core.info("pipeline is not linked to same Github repo");
         }
 
         let build: BuildInterfaces.Build = {
