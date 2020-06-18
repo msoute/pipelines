@@ -13,6 +13,9 @@ inputs:
   azure-devops-token: 
     description: 'Paste personal access token of the user as value of secret variable:AZURE_DEVOPS_TOKEN' 
     required: true 
-runs: 
+  azure-source-branch:
+    description: 'Branch where the pipeline definition exists, used if azure uses a different repository.'
+    required: false
+runs:
   using: 'node12' 
   main: 'lib/main.js' 
