@@ -79,6 +79,7 @@ export class PipelineRunner {
             sourceBranch = this.branch,
                 sourceVersion = this.commitId
         } else {
+            sourceBranch = this.taskParameters.azureSourceBranch
             core.info("pipeline is not linked to same Github repo");
         }
 
@@ -89,7 +90,7 @@ export class PipelineRunner {
             project: {
                 id: buildDefinition.project.id
             },
-            sourceBranch: 'azure-v2' || sourceBranch ,
+            sourceBranch: sourceBranch,
             sourceVersion: null,
             reason: BuildInterfaces.BuildReason.Triggered,
             parameters: this.taskParameters.azurePipelineVariables
